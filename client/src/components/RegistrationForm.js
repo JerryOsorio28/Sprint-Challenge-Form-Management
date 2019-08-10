@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { Form, Field, withFormik, resetForm } from 'formik';
+import { Form, Field, withFormik } from 'formik';
 import VeggyList from './VeggyList';
 
-const RegistrationForm = ( { errors, touched, values, status } ) => {
+const RegistrationForm = ( { errors, touched, status } ) => {
 
     const [veggyList, setVeggyList] = useState([]);
 
@@ -29,7 +29,6 @@ const RegistrationForm = ( { errors, touched, values, status } ) => {
                 {touched.username && errors.username && <p className="error">{errors.username}</p>}
                 <h3 class='formTitle'>Password</h3>
                 <Field 
-                    id='password'
                     type='password' 
                     name='password' 
                     placeholder='Password'
@@ -37,7 +36,6 @@ const RegistrationForm = ( { errors, touched, values, status } ) => {
                 <button type='submit'>Submit</button>
                 {touched.password && errors.password && <p className="error">{errors.password}</p>}
             </Form>
-            <h3 id='vegetablesTitle'>Food Menu</h3>
             <VeggyList veggyList={veggyList}/>
         </div>
     );
@@ -51,10 +49,10 @@ const FormikRegistrationForm = withFormik({
         }; 
     },
 //<-------------------------------------------YUP FORM VALIDATION 
-    // validationSchema: Yup.object().shape({
-    //     username: Yup.string().required('Username is required'),
-    //     password: Yup.string().required('Password is required'),
-    // }),
+    validationSchema: Yup.object().shape({
+        username: Yup.string().required('Username is required'),
+        password: Yup.string().required('Password is required'),
+    }),
 
     handleSubmit(values, { setStatus,  resetForm } ) {
         axios
@@ -62,7 +60,6 @@ const FormikRegistrationForm = withFormik({
             .then(res => {
                 // console.log(res)
                 // setStatus(res);
-                resetForm();
             })
             // .catch(err => console.log(err.response))
 
@@ -71,6 +68,7 @@ const FormikRegistrationForm = withFormik({
             .then(data => {
                 // console.log(data)
                 setStatus(data.data)
+                resetForm();
             })
             .catch(err => console.log(err.response))
     }
