@@ -20,23 +20,24 @@ const RegistrationForm = ( { errors, touched, values, status } ) => {
         <div className='RegistrationForm'>
             <h1>Registration Form</h1>
             <Form>
-                <h3>Username</h3>
+                <h3 class='formTitle'>Username</h3>
                 <Field 
                     type='text' 
                     name='username' 
                     placeholder='Username'
                 />
                 {touched.username && errors.username && <p className="error">{errors.username}</p>}
-                <h3>Password</h3>
+                <h3 class='formTitle'>Password</h3>
                 <Field 
+                    id='password'
                     type='password' 
                     name='password' 
                     placeholder='Password'
                 />
-                {touched.password && errors.password && <p className="error">{errors.password}</p>}
                 <button type='submit'>Submit</button>
+                {touched.password && errors.password && <p className="error">{errors.password}</p>}
             </Form>
-            <h3>List of Vegetables..?</h3>
+            <h3 id='vegetablesTitle'>Food Menu</h3>
             <VeggyList veggyList={veggyList}/>
         </div>
     );
@@ -50,10 +51,10 @@ const FormikRegistrationForm = withFormik({
         }; 
     },
 //<-------------------------------------------YUP FORM VALIDATION 
-    validationSchema: Yup.object().shape({
-        username: Yup.string().required('Username is required'),
-        password: Yup.string().required('Password is required'),
-    }),
+    // validationSchema: Yup.object().shape({
+    //     username: Yup.string().required('Username is required'),
+    //     password: Yup.string().required('Password is required'),
+    // }),
 
     handleSubmit(values, { setStatus,  resetForm } ) {
         axios
@@ -68,7 +69,7 @@ const FormikRegistrationForm = withFormik({
         axios
             .get('http://localhost:5000/api/restricted/data')
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 setStatus(data.data)
             })
             .catch(err => console.log(err.response))

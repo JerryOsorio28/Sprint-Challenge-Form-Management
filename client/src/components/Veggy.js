@@ -1,16 +1,22 @@
 import React from 'react';
 
-const Veggy = veggy => {
-    // console.log(veggy)
-    return (
-        <div className='veggy'>
-            <h3>{veggy.veggy.name}</h3>
-            <h5>Ingredients:</h5>
-            {veggy.veggy.ingredients.map(ingredient => <ul><li>{ingredient}</li></ul>)}
-            <h5>{veggy.veggy.course}</h5>
-            <h5>{veggy.veggy.technique}</h5>
-        </div>
-    );
+class Veggy extends React.Component {
+    render(){
+        console.log(this.props)
+        return (
+            <div className='veggy'>
+                <h3>{this.props.veggy.name}</h3>
+                <h5>Ingredients:</h5>
+                <div className='ingredientsList'>
+                {this.props.ingredients.map((ingredient, i) => <ul key='i'><li>{ingredient}</li></ul>)}
+                </div>
+                <div className='footer'>
+                <h5>Course: {this.props.course}</h5>
+                <h5>Technique: {this.props.technique}</h5>
+                </div>
+            </div>
+        ); 
+    }
 };
 
 export default Veggy;

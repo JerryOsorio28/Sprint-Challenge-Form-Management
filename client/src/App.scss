@@ -1,0 +1,105 @@
+html {
+  display: flex;
+  justify-content: center;
+  height: 400%;
+  background-image: linear-gradient(black, #A80000)
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+#root{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.App{
+  width: 62.5%;
+  text-align: left;
+  background-color: #f5f6fa;
+  padding: 20px;
+  
+  h1{
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  h3{
+    margin: 1rem 0 1rem;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .formTitle{
+    text-align: left;
+    border-top: 1px solid lightgray;
+    padding-top: 30px;
+  }
+
+  input {
+    border: 1px solid gray;
+    padding: 5px;
+    width: 50%;
+    margin-bottom: 30px;
+    border-radius: 10px;
+  }
+
+  button {
+    padding: 5px 10px;
+    border: 1px solid gray;
+    background-color: white;
+    margin-left: 20px;
+    border-radius: 10px;
+    
+  }
+
+    #vegetablesTitle{
+      text-align: center;
+      margin: 40px 0;
+  }
+
+  #vegetablesTitle{
+    font-size: 20px;
+  }
+
+  .veggyList{
+
+    .veggy{
+      padding: 10px;
+      border: 1px solid red;
+      width: 80%;
+      border-radius: 10px;
+      background-image: linear-gradient( black, red);
+      color: white;
+      margin: 5px;
+
+      h5{
+        font-size: 11px;
+      }
+  
+      .ingredientsList{
+        font-size: 10px;
+
+        ul {
+          padding-left: 13px;
+        }
+      }
+  
+      .footer{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+
+        h5{
+          margin: 2px;
+        }
+      }
+    }
+  }
+
+}
